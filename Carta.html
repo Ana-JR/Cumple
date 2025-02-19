@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor 💖</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: lightpink;
+        }
+        .container {
+            position: relative;
+            width: 900px;
+            height: 500px;
+        }
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #ffb6c1, #ff4d6d);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, #ff758f, #ff4d6d);
+            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+            transition: transform 0.5s ease-in-out;
+            box-shadow: inset 0px -6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .heart {
+            position: absolute;
+            top: 40%;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+            cursor: pointer;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+        .heart::after {
+            left: 50px;
+            top: 0;
+        }
+        .letter {
+            position: absolute;
+            width: 100%;
+            min-height: 200px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .letter p {
+            font-size: 18px;
+            color: #333;
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        .open .letter {
+            transform: translateY(-10%);
+            opacity: 1;
+        }
+        .open .envelope::before {
+            transform: rotateX(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="openLetter()">
+        <div class="envelope">
+            <div class="heart"></div>
+        </div>
+        <div class="letter">
+            <p>Querida [Nombre de tu novia],</p>
+            <p>Aquí puedes escribir tu carta romántica. Exprésale todo tu amor y sentimientos. En el video se menciona que la unidad de procesamiento central (CPU) es la responsable de interpretar y ejecutar los comandos en una computadora. Es un microchip pequeño que se encuentra dentro de un paquete de CPU y se conecta a la placa base a través de un socket. En el video se explica que existen diferentes tipos de sockets y paquetes de procesadores. Entre ellos, la matriz de pines en cuadrícula (PGA), donde los pines están en la parte inferior del procesador y se insertan en el socket de la CPU de la placa base, y la matriz de contactos en cuadrícula (LGA), en la cual los pines se encuentran en el socket en lugar del procesador. 💕</p>
+            <p>Con todo mi amor, tu amorcito</p>
+        </div>
+    </div>
+    <script>
+        function openLetter() {
+            document.querySelector('.container').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
