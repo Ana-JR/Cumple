@@ -71,7 +71,9 @@
         }
         .letter {
             position: absolute;
-            width: 100%;
+            width: 90%;
+            left: 5%; 
+            transform: translate(-50%, -50%);
             min-height: 200px;
             background: white;
             border-radius: 10px;
@@ -87,10 +89,11 @@
             align-items: center;
         }
         .letter p {
-            font-size: 18px;
+            font-size: 20px;
             color: #333;
             padding-right: 20px;
             padding-left: 20px;
+            padding-top: 10px;
         }
         .open .letter {
             transform: translateY(-10%);
@@ -98,6 +101,50 @@
         }
         .open .envelope::before {
             transform: rotateX(180deg);
+        }
+
+        .floating-hearts {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .floating-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: floatUp 4s ease-in-out infinite;
+        }
+        .floating-heart:before,
+        .floating-heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .floating-heart:before {
+            top: -10px;
+            left: 0;
+        }
+        .floating-heart:after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1) rotate(-45deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5) rotate(-45deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -107,17 +154,30 @@
             <div class="heart"></div>
         </div>
         <div class="letter">
-            <p>Querida [Nombre de tu novia],</p>
-            <p>Aquí puedes escribir tu carta romántica. Exprésale todo tu amor y sentimientos. En el video se menciona que la unidad de procesamiento central (CPU) es la responsable de interpretar y ejecutar los comandos en una computadora. Es un microchip pequeño que se encuentra dentro de un paquete de CPU y se conecta a la placa base a través de un socket. En el video se explica que existen diferentes tipos de sockets y paquetes de procesadores. Entre ellos, la matriz de pines en cuadrícula (PGA), donde los pines están en la parte inferior del procesador y se insertan en el socket de la CPU de la placa base, y la matriz de contactos en cuadrícula (LGA), en la cual los pines se encuentran en el socket en lugar del procesador. 💕</p>
-            <p>Con todo mi amor, tu amorcito</p>
+            <p>Feliz cumpleaños mi amor hermoso, amor de vida, dueña de mi corazón, mi negra bella, mi preciosa, mi corazón, mi bombón, mi chocolate, mi ternura, mi caramelo, mi paleta, mi fresa, mi melocotón, dio mioo, mi persona favorita. 🥳🌟 <br>
+            Hoy es un día super especial porque celebramos tu cumpleaños, y quiero que te sientas tan especial como tú haces que me sienta todos los días. Tu sabes que no hay palabras para expresar lo mucho que te amo, lo feliz que me haces y lo afortunada que me siento por tenerte a mi lado. Desde que entraste en mi vida, todo se volvió mejor, te convertiste en mi bestie, mi amor, mi compañera de vida, mi cómplice, mi alegría, mi paz y bueno básicamente te volviste mi todo, no me imagino mi vida sin ti, sin tus loqueras, sin tus risas, sin tu cariño, no hay forma, porque me haces sentir completa y muy feliz. <br>
+            GRACIAS por permitirme ser parte de tu vida, por ser tú, por hacer mi vida más feliz, por ser la razón de mi sonrisa, por hacerme reír, por amarme como lo haces y por ser mi todo. Y aunque no pueda darte todo lo que te mereces, espero que tengas un hermoso día, con muchas risas, amor, y todos los detallitos que te hacen feliz. <br>
+            Feliz cumpleaños mi amor, te deseo todo lo mejor, otro año lleno de amor y momentos inolvidables juntas. Te amo más de lo que las palabras pueden expresar y no puedo esperar para crear más recuerdos contigo. 💖<br>
+            Felicidades mi vida, con todo mi amor, tu amorcito 💕</p>
         </div>
     </div>
+    <div class="floating-hearts"></div>
     <script>
         function openLetter() {
             document.querySelector('.container').classList.toggle('open');
         }
+
+        function createFloatingHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("floating-heart");
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            document.querySelector(".floating-hearts").appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+        setInterval(createFloatingHeart, 300);
     </script>
 </body>
-</html>
-
 </html>
